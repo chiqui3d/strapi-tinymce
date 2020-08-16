@@ -20,4 +20,4 @@ Add the `content-manager` directory to your `extensions` directory
 In addition, it downloads the Tinymce **prod** files from https://www.tiny.cloud/get-tiny/self-hosted/ and adds them to the `public` folder.
 This is because if you don't get a message inside the editor that you need a cloud api key, and we want to use it for **self-hosted**.
 
-This configuration along with all the options can be seen here https://github.com/chiqui3d/strapi-tinymce/blob/a99043cd6087f323fa0ad413fa773a167f41a17b/content-manager/admin/src/components/WysiwygWithErrors/Tinymce.js#L25
+This configuration along with all the options can be seen here https://github.com/chiqui3d/strapi-tinymce/blob/master/content-manager/admin/src/components/WysiwygWithErrors/Tinymce.js#L25
