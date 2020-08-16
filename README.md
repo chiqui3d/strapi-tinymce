@@ -10,6 +10,8 @@ This extension also includes the button to add images from the Media Library
 
 # Setup
 
+`npm install --save @tinymce/tinymce-react`
+
 Add the `content-manager` directory to your `extensions` directory
 
 In addition, it downloads the Tinymce prod files from https://www.tiny.cloud/get-tiny/self-hosted/ and adds them to the `public` folder.
