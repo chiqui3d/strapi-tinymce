@@ -2,6 +2,9 @@
 
 This extension completely replaces Strapi's Wysiwyg editor by Tinymce.
 
+![Preview Tinymce](https://image.prntscr.com/image/IisLzweeReenNXlonpIxNg.png "Preview Tinymce")
+
+
 This extension has been created based on the same tutorial that is in the documentation for adding CKEditor https://strapi.io/documentation/v3.x/guides/registering-a-field-in-admin.html
 
 CKEditor in the latest versions has removed the options to add HTML code, and that's why among other things I preferred to use Tinymce.
