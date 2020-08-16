@@ -28,6 +28,9 @@ const Editor = ({ onChange, name, value }) => {
             height: 500,
             menubar: false,
             // eslint-disable-next-line @typescript-eslint/camelcase
+            convert_urls: false,
+            relative_urls : true,
+            remove_script_host : true,
             toolbar_mode: 'wrap',
             plugins: [
               'advlist autolink lists link image charmap print preview anchor',
