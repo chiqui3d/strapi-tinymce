@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { Button } from '@buffetjs/core';
@@ -15,6 +15,7 @@ const WysiwygWithErrors = ({
   onChange,
   value,
 }) => {
+  const theEditor = useRef();
   const [isOpen, setIsOpen] = useState(false);
   let spacer = !isEmpty(inputDescription) ? (
     <div style={{ height: '.4rem' }} />
@@ -26,12 +27,13 @@ const WysiwygWithErrors = ({
     spacer = <div />;
   }
   const handleToggle = () => setIsOpen(prev => !prev);
-  const handleChange = data => {
+  const handleImage = data => {
+    // console.log("inserting...", theEditor.current);
     if (data.mime.includes('image')) {
       const imgTag = `<p><img src="${data.url}" caption="${data.caption}" alt="${data.alternativeText}"></img></p>`;
-      const newValue = value ? `${value}${imgTag}` : imgTag;
-
-      onChange({ target: { name, value: newValue } });
+      theEditor.current.insertContent(imgTag);
+      // const newValue = value ? `${value}${imgTag}` : imgTag;
+      // onChange({ target: { name, value: newValue } });
     }
 
     // Handle videos and other type of files by adding some code
@@ -52,7 +54,7 @@ const WysiwygWithErrors = ({
           Media Library
         </Button>
       </div>
-      <Editor name={name} onChange={onChange} value={value} />
+      <Editor name={name} onChange={onChange} value={value} ref={theEditor}/>
       <InputDescription
         message={inputDescription}
         style={!isEmpty(inputDescription) ? { marginTop: '1.4rem' } : {}}
@@ -62,7 +64,7 @@ const WysiwygWithErrors = ({
         name={name}
       />
       {spacer}
-      <MediaLib onToggle={handleToggle} isOpen={isOpen} onChange={handleChange} />
+      <MediaLib onToggle={handleToggle} isOpen={isOpen} onChange={handleImage} />
     </div>
   );
 };

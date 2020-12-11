@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Editor as Tinymce } from '@tinymce/tinymce-react';
 import styled from 'styled-components';
 import { auth } from 'strapi-helper-plugin';
+const { forwardRef, useRef, useImperativeHandle } = React;
 
 const Wrapper = styled.div`
   .ck-editor__main {
@@ -13,7 +14,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const Editor = ({ onChange, name, value }) => {
+const Editor = forwardRef(({ onChange, name, value }, ref) => {
+  const tmce = useRef();
+  useImperativeHandle(ref, () => ({
+
+    insertContent(content) {
+      tmce.current.editor.insertContent(content);
+    }
+
+  }));
 
   const jwtToken = auth.getToken();
 
@@ -21,6 +30,7 @@ const Editor = ({ onChange, name, value }) => {
     <>
       <Wrapper>
         <Tinymce
+          ref={tmce}
           initialValue=""
           tinymceScriptSrc='/tinymce/js/tinymce/tinymce.min.js'
           value={value}
