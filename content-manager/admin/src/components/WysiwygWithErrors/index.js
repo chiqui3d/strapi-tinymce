@@ -27,14 +27,22 @@ const WysiwygWithErrors = ({
   }
   const handleToggle = () => setIsOpen(prev => !prev);
   const handleChange = data => {
+    let newValue = value;
     if (data.mime.includes('image')) {
-      const imgTag = `<p><img src="${data.url}" caption="${data.caption}" alt="${data.alternativeText}"></img></p>`;
-      const newValue = value ? `${value}${imgTag}` : imgTag;
-
+      /**
+       * @tutorial Check the data object from media library, to insert the options you need to the image.
+       * @example console.log(data);
+       * @type {string}
+       */
+      const imgTag = `<p><img src="${data.url}" alt="${data.alternativeText}"/></p>`;
+      if (typeof window !== 'undefined'){
+        window.tinymce.activeEditor.insertContent(imgTag);
+        newValue = window.tinymce.activeEditor.getContent();
+      }
       onChange({ target: { name, value: newValue } });
     }
-
     // Handle videos and other type of files by adding some code
+
   };
 
   return (

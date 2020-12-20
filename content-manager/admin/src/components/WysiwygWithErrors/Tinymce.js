@@ -14,20 +14,17 @@ const Wrapper = styled.div`
 `;
 
 const Editor = ({ onChange, name, value }) => {
-
   const jwtToken = auth.getToken();
-
   return (
     <>
       <Wrapper>
         <Tinymce
           initialValue=""
-          tinymceScriptSrc='/tinymce/js/tinymce/tinymce.min.js'
+          tinymceScriptSrc={strapi.backendURL + '/tinymce/js/tinymce/tinymce.min.js'}
           value={value}
           init={{
             height: 500,
             menubar: false,
-            // eslint-disable-next-line @typescript-eslint/camelcase
             convert_urls: false,
             relative_urls : true,
             remove_script_host : true,
@@ -40,7 +37,6 @@ const Editor = ({ onChange, name, value }) => {
               'hr visualchars imagetools emoticons'
             ],
             toolbar:
-            // eslint-disable-next-line no-multi-str
               'undo redo | formatselect forecolor backcolor | \
               bold italic underline strikethrough removeformat | \
               alignleft aligncenter alignright alignjustify | \
