@@ -15,9 +15,9 @@ This extension also includes the button to add images from the Media Library and
 
 `npm install --save @tinymce/tinymce-react`
 
-Add the `content-manager` directory to your `extensions` directory
+Copy the `content-manager` directory to your `extensions` directory
 
-In addition, it downloads the Tinymce **prod** files from https://www.tiny.cloud/get-tiny/self-hosted/ and adds them to the `public` folder.
+In addition, download the Tinymce **prod** files from https://www.tiny.cloud/get-tiny/self-hosted/ and add them to the `public` folder.
 We need to download it because if you don't you will receive an error in the editor that you need a cloud api key, and we want to use it for **self-hosted**.
 
 This configuration along with all the options can be seen here https://github.com/chiqui3d/strapi-tinymce/blob/master/content-manager/admin/src/components/WysiwygWithErrors/Tinymce.js#L25
