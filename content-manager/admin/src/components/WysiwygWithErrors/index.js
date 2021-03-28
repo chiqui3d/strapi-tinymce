@@ -6,6 +6,8 @@ import { Label, InputDescription, InputErrors } from 'strapi-helper-plugin';
 import Editor from './Tinymce';
 import MediaLib from './MediaLib';
 
+let passes = {};
+
 const WysiwygWithErrors = ({
   inputDescription,
   errors,
@@ -15,6 +17,15 @@ const WysiwygWithErrors = ({
   onChange,
   value,
 }) => {
+  if (!passes[name]) {
+    passes[name] = 0;
+  }
+  if (!value && passes[name] < 1) {
+    passes[name]++;
+    return (null);
+  }
+  passes[name] = 0;
+
   const [isOpen, setIsOpen] = useState(false);
   let spacer = !isEmpty(inputDescription) ? (
     <div style={{ height: '.4rem' }} />

@@ -57,7 +57,7 @@ const Editor = ({ onChange, name, value }) => {
 Editor.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default Editor;
