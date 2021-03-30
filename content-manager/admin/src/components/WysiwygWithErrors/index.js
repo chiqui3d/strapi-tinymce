@@ -58,7 +58,7 @@ const WysiwygWithErrors = ({
           Media Library
         </Button>
       </div>
-      <Editor name={name} onChange={onChange} value={value} />
+      <Editor name={name} onChange={onChange} value={value || ""} />
       <InputDescription
         message={inputDescription}
         style={!isEmpty(inputDescription) ? { marginTop: '1.4rem' } : {}}
