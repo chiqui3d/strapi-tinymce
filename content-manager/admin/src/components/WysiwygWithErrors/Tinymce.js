@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Editor as Tinymce } from '@tinymce/tinymce-react';
 import styled from 'styled-components';
-import { auth } from 'strapi-helper-plugin';
 
 const Wrapper = styled.div`
   .ck-editor__main {
@@ -14,12 +13,10 @@ const Wrapper = styled.div`
 `;
 
 const Editor = ({ onChange, name, value }) => {
-  const jwtToken = auth.getToken();
   return (
     <>
       <Wrapper>
         <Tinymce
-          initialValue=""
           tinymceScriptSrc={strapi.backendURL + '/tinymce/js/tinymce/tinymce.min.js'}
           value={value}
           init={{
